@@ -1,0 +1,66 @@
+﻿<Window x:Class="DoclerSky.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoclerSky"
+        mc:Ignorable="d"
+        Icon="Images/sunnylogo.png"
+        Title="DoclerSky (no pun intended)"
+        Height="450"
+        Width="800">
+
+    <Border Padding="10">
+        <Grid>
+            <!-- Row Settings -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="42" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <TabControl x:Name="CitySelection"
+                            SelectedItem="{Binding SelectedCity,Mode=OneWayToSource}"
+                            TabStripPlacement="Left"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                    <TabItem Header="Budapest">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Luxembourg">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Debrecen">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Pécs">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Wienna">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Prague">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="München">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                    <TabItem Header="Amsterdam">
+                        <Grid Background="#FFE5E5E5" />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <ComboBox VerticalAlignment="Center"
+                      Grid.Row="1"
+                      Margin="731,10,0,10" />
+            <TextBox BorderThickness="0"
+                     HorizontalAlignment="Center"
+                     Height="23"
+                     Margin="590,10,60,0"
+                     Grid.Row="1"
+                     TextWrapping="Wrap"
+                     Text="Language selector"
+                     VerticalAlignment="Top"
+                     Width="122" />
+        </Grid>
+    </Border>
+</Window>
