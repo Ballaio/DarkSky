@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommandAsync.cs" />
     <Compile Include="Models\ForecastResponse.cs" />
     <Compile Include="Services\DarkSkyService.cs" />
     <Compile Include="Services\IDarkSkyService.cs" />

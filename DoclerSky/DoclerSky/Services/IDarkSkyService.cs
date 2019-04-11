@@ -12,10 +12,8 @@ namespace DoclerSky.Services
         /// <summary>
         /// Task for DarkSky API call
         /// </summary>
-        /// <param name="latitude"></param>
-        /// <param name="longitude"></param>
-        /// <param name="lang"></param>
+        /// <param name="coordinates"></param>
         /// <returns>Forecast response List</returns>
-        Task<List<ForecastResponse>> GetForecastResponsesAsync(string latitude, string longitude, string lang);
+        Task<List<ForecastResponse>> GetForecastResponsesAsync(string coordinates);
     }
 }

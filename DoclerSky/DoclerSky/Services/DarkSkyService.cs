@@ -46,17 +46,17 @@ namespace DoclerSky.Services
             ExcludedParams = ConfigurationManager.AppSettings["ExcludedParams"];
         }
 
+        #endregion
+
         /// <summary>
         /// Calls the DarkSky API with the requested parameters
         /// </summary>
-        /// <param name="latitude"></param>
-        /// <param name="longitude"></param>
-        /// <param name="lang"></param>
+        /// <param name="coordinates"></param>
         /// <returns>Forecast response List</returns>
-        public async Task<List<ForecastResponse>> GetForecastResponsesAsync(string latitude, string longitude, string lang)
+        public async Task<List<ForecastResponse>> GetForecastResponsesAsync(string coordinates)
         {
             // The request url with properties
-            var request = latitude + "," + longitude + "?exclude=" + ExcludedParams + "&lang=" + lang;
+            var request = coordinates + "?exclude=" + ExcludedParams;
 
             // The actual API call
             var response = await client.GetAsync(request);
@@ -70,7 +70,5 @@ namespace DoclerSky.Services
             // TODO: map response to "ForecastResponse"
             throw new NotImplementedException();
         }
-
-        #endregion
     }
 }

@@ -1,11 +1,14 @@
-﻿using DoclerSky.Services;
+﻿using DoclerSky.Commands;
+using DoclerSky.Services;
 using DoclerSky.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace DoclerSky.ViewModels
 {
@@ -22,6 +25,8 @@ namespace DoclerSky.ViewModels
         /// <summary>
         /// The selected Tabitem (we will use it in the API call)
         /// </summary>
+        private ICommand _cityData;
+
         private TabItem _selectedCity;
 
         #endregion
@@ -37,9 +42,44 @@ namespace DoclerSky.ViewModels
             {
                 return _selectedCity;
             }
-            set
+            set => _selectedCity = (TabItem)value;
+        }
+
+        public ICommand SetCityData
+        {
+            get
             {
-                _selectedCity = value as TabItem;
+                return _cityData = new RelayCommandAsync(GetForecast, (x) => true);
+            }
+        }
+
+        public async Task GetForecast()
+        {
+            var response = await _darkSkyService.GetForecastResponsesAsync(GetCoordinates());
+        }
+
+        public string GetCoordinates()
+        {
+            switch (_selectedCity.Name)
+            {
+                case "Budapest":
+                    return ConfigurationManager.AppSettings["Budapest"];
+                case "Luxembourg":
+                    return ConfigurationManager.AppSettings["Luxembourg"];
+                case "Debrecen":
+                    return ConfigurationManager.AppSettings["Debrecen"];
+                case "Pecs":
+                    return ConfigurationManager.AppSettings["Pecs"];
+                case "Wienna":
+                    return ConfigurationManager.AppSettings["Wienna"];
+                case "Prague":
+                    return ConfigurationManager.AppSettings["Prague"];
+                case "München":
+                    return ConfigurationManager.AppSettings["München"];
+                case "Amsterdam":
+                    return ConfigurationManager.AppSettings["Amsterdam"];
+                default:
+                    return null;
             }
         }
 

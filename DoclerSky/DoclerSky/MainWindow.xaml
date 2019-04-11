@@ -19,32 +19,49 @@
             </Grid.RowDefinitions>
             <Grid>
                 <TabControl x:Name="CitySelection"
-                            SelectedItem="{Binding SelectedCity,Mode=OneWayToSource}"
+                            SelectedItem="{Binding SelectedCity}"
                             TabStripPlacement="Left"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch">
-                    <TabItem Header="Budapest">
+
+                    <TabItem x:Name="Budapest"
+                             Header="Budapest">
+                        <TabItem.InputBindings>
+                            <MouseBinding Command="{Binding SetCityData}"
+                                          MouseAction="LeftClick" />
+                        </TabItem.InputBindings>
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Luxembourg">
+                    <TabItem x:Name="Luxembourg"
+                             Header="Luxembourg">
+                        <TabItem.InputBindings>
+                            <MouseBinding Command="{Binding SetCityData}"
+                                          MouseAction="LeftClick" />
+                        </TabItem.InputBindings>
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Debrecen">
+                    <TabItem x:Name="Debrecen"
+                             Header="Debrecen">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Pécs">
+                    <TabItem x:Name="Pecs"
+                             Header="Pécs">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Wienna">
+                    <TabItem x:Name="Wienna"
+                             Header="Wienna">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Prague">
+                    <TabItem x:Name="Prague"
+                             Header="Prague">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="München">
+                    <TabItem x:Name="München"
+                             Header="München">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
-                    <TabItem Header="Amsterdam">
+                    <TabItem x:Name="Amsterdam"
+                             Header="Amsterdam">
                         <Grid Background="#FFE5E5E5" />
                     </TabItem>
                 </TabControl>
