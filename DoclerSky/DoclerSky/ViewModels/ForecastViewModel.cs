@@ -1,4 +1,6 @@
 ﻿using DoclerSky.Commands;
+using DoclerSky.Helpers;
+using DoclerSky.Models;
 using DoclerSky.Services;
 using DoclerSky.ViewModels.Base;
 using System;
@@ -9,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Runtime.Caching;
 
 namespace DoclerSky.ViewModels
 {
@@ -17,17 +20,13 @@ namespace DoclerSky.ViewModels
 
         #region Private Members
 
-        /// <summary>
-        /// Property to call the DarkSky API
-        /// </summary>
+        private MemoryCache cachedData;
+
+        private string selectedCity;
+
         private IDarkSkyService _darkSkyService;
 
-        /// <summary>
-        /// The selected Tabitem (we will use it in the API call)
-        /// </summary>
-        private ICommand _cityData;
-
-        private TabItem _selectedCity;
+        private List<ForecastResponse> _forecast;
 
         #endregion
 
@@ -36,50 +35,41 @@ namespace DoclerSky.ViewModels
         /// <summary>
         /// Binds to the TabControl, gets the selected Tabitem
         /// </summary>
-        public TabItem SelectedCity
+        public TabItem SelectCity
         {
-            get
+            set
             {
-                return _selectedCity;
+                selectedCity = value.Name;
+                Task.Run(() => GetForecast().Wait());
             }
-            set => _selectedCity = (TabItem)value;
         }
 
-        public ICommand SetCityData
+        public List<ForecastResponse> Forecast
         {
             get
             {
-                return _cityData = new RelayCommandAsync(GetForecast, (x) => true);
+                return _forecast;
+            }
+            set
+            {
+                _forecast = value;
+                OnPropertyChanged();
             }
         }
 
         public async Task GetForecast()
         {
-            var response = await _darkSkyService.GetForecastResponsesAsync(GetCoordinates());
-        }
-
-        public string GetCoordinates()
-        {
-            switch (_selectedCity.Name)
+            if (!cachedData.Contains(selectedCity))
             {
-                case "Budapest":
-                    return ConfigurationManager.AppSettings["Budapest"];
-                case "Luxembourg":
-                    return ConfigurationManager.AppSettings["Luxembourg"];
-                case "Debrecen":
-                    return ConfigurationManager.AppSettings["Debrecen"];
-                case "Pecs":
-                    return ConfigurationManager.AppSettings["Pecs"];
-                case "Wienna":
-                    return ConfigurationManager.AppSettings["Wienna"];
-                case "Prague":
-                    return ConfigurationManager.AppSettings["Prague"];
-                case "München":
-                    return ConfigurationManager.AppSettings["München"];
-                case "Amsterdam":
-                    return ConfigurationManager.AppSettings["Amsterdam"];
-                default:
-                    return null;
+                var expiration = DateTimeOffset.UtcNow.AddMinutes(5);
+                var response = await _darkSkyService.GetForecastResponsesAsync(GetCoordinates.GetCoordinatesFromConfig(selectedCity));
+                Forecast = response;
+
+                cachedData.Add(selectedCity, Forecast, expiration);
+            }
+            else
+            {
+                Forecast = cachedData.GetCacheItem(selectedCity).Value as List<ForecastResponse>;
             }
         }
 
@@ -94,6 +84,7 @@ namespace DoclerSky.ViewModels
         public ForecastViewModel(IDarkSkyService darkSkyService)
         {
             _darkSkyService = darkSkyService;
+            cachedData = MemoryCache.Default;
         }
 
         #endregion

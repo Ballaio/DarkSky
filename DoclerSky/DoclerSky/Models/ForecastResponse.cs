@@ -16,5 +16,7 @@ namespace DoclerSky.Models
         public double WindSpeed { get; set; }
         public double Humidity { get; set; }
         public int UVIndex { get; set; }
+        public DateTimeOffset DateTime { get; set; }
+        public string Icon { get; set; }
     }
 }

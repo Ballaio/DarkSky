@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 namespace DoclerSky.Commands
 {
+    [Obsolete]
     public class RelayCommandAsync : ICommand
     {
         private readonly Func<Task> _execute;

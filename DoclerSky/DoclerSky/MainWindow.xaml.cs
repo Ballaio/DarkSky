@@ -23,7 +23,7 @@ namespace DoclerSky
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IDarkSkyService _darkSkyService;
+        private IDarkSkyService _darkSkyService = new DarkSkyService();
 
         public MainWindow()
         {
@@ -32,7 +32,7 @@ namespace DoclerSky
             // Binding the DataContext to the needed Viewmodel 
             // TODO: create VM locator
             DataContext = new ForecastViewModel(_darkSkyService);
-            
+
         }
     }
 }

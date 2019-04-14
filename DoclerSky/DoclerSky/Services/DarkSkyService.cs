@@ -55,8 +55,10 @@ namespace DoclerSky.Services
         /// <returns>Forecast response List</returns>
         public async Task<List<ForecastResponse>> GetForecastResponsesAsync(string coordinates)
         {
+            var result = new List<ForecastResponse>();
+
             // The request url with properties
-            var request = coordinates + "?exclude=" + ExcludedParams;
+            var request = ApiKey + "/" + coordinates + "?exclude=" + ExcludedParams;
 
             // The actual API call
             var response = await client.GetAsync(request);
@@ -67,8 +69,47 @@ namespace DoclerSky.Services
                 throw new Exception("The status code is : " + response.StatusCode);
             }
 
-            // TODO: map response to "ForecastResponse"
-            throw new NotImplementedException();
+            dynamic deserializedResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+
+
+            var currentWeather = deserializedResponse.currently;
+
+            result.Add(new ForecastResponse
+            {
+                ApparentTemperature = currentWeather.apparentTemperature,
+                Humidity = currentWeather.humidity,
+                Temperature = currentWeather.temperature,
+                UVIndex = currentWeather.uvIndex,
+                WindSpeed = currentWeather.windSpeed,
+                DateTime = DateTimeOffset.FromUnixTimeSeconds((long)currentWeather.time),
+                Icon = currentWeather.icon
+            });
+
+            var forecast = deserializedResponse.daily.data;
+
+
+            // We want to skip the first 2 iteration of the foreach, because it gives us irrelevant weather data
+            int index = 0;
+
+            foreach (var item in forecast)
+            {
+                if (index > 1)
+                {
+                    result.Add(new ForecastResponse
+                    {
+                        ApparentTemperature = item.apparentTemperatureHigh,
+                        Humidity = item.humidity,
+                        Temperature = item.temperatureHigh,
+                        UVIndex = item.uvIndex,
+                        WindSpeed = item.windSpeed,
+                        DateTime = DateTimeOffset.FromUnixTimeSeconds((long)item.time),
+                        Icon = item.icon
+                    });
+                }
+                index++;
+            }
+
+            return result;
         }
     }
 }
