@@ -12,6 +12,14 @@ namespace DoclerSky.Converters
 {
     public class ImageConverter : IMultiValueConverter
     {
+        /// <summary>
+        /// Converting the ICON string from the API response to a local picture path
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns>Image Path</returns>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values[0] == DependencyProperty.UnsetValue)

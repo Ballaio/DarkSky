@@ -9,6 +9,11 @@ namespace DoclerSky.Helpers
 {
     public class GetCoordinates
     {
+        /// <summary>
+        /// Get the city's coordinates from app config
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <returns>Coodrinates string for API call</returns>
         public static string GetCoordinatesFromConfig(string cityName)
         {
             switch (cityName)

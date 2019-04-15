@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DoclerSky.Commands
-{
+{ 
     [Obsolete]
     public class RelayCommandAsync : ICommand
     {

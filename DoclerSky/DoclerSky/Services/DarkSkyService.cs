@@ -48,6 +48,8 @@ namespace DoclerSky.Services
 
         #endregion
 
+        #region API call
+
         /// <summary>
         /// Calls the DarkSky API with the requested parameters
         /// </summary>
@@ -69,11 +71,13 @@ namespace DoclerSky.Services
                 throw new Exception("The status code is : " + response.StatusCode);
             }
 
+            // Deserializing
             dynamic deserializedResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
 
-
+            // using temporal variable for easyer mapping
             var currentWeather = deserializedResponse.currently;
 
+            // The first element of FirecastResponse is our CurrentWeather
             result.Add(new ForecastResponse
             {
                 ApparentTemperature = currentWeather.apparentTemperature,
@@ -85,8 +89,8 @@ namespace DoclerSky.Services
                 Icon = currentWeather.icon
             });
 
+            // using temporal variable for easyer mapping
             var forecast = deserializedResponse.daily.data;
-
 
             // We want to skip the first 2 iteration of the foreach, because it gives us irrelevant weather data
             int index = 0;
@@ -95,6 +99,7 @@ namespace DoclerSky.Services
             {
                 if (index > 1)
                 {
+                    // The second and other elements of the ForecastResponse are the Forecast data
                     result.Add(new ForecastResponse
                     {
                         ApparentTemperature = item.apparentTemperatureHigh,
@@ -111,5 +116,8 @@ namespace DoclerSky.Services
 
             return result;
         }
+        
+        #endregion
+
     }
 }

@@ -24,6 +24,10 @@ namespace DoclerSky
     public partial class MainWindow : Window
     {
         private IDarkSkyService _darkSkyService = new DarkSkyService();
+        private ResourceDictionary templatePath = new ResourceDictionary
+        {
+            Source = new Uri("/Templates/TabItem.xaml", UriKind.Relative)
+        };
 
         public MainWindow()
         {
@@ -32,6 +36,30 @@ namespace DoclerSky
             // Binding the DataContext to the needed Viewmodel 
             // TODO: create VM locator
             DataContext = new ForecastViewModel(_darkSkyService);
+
+        }
+
+        private void Hu_localization_Selected(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary resourceChange = new ResourceDictionary
+            {
+                Source = new Uri("/Localization/StringResources.hu.xaml", UriKind.Relative)
+            };
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(templatePath);
+            Resources.MergedDictionaries.Add(resourceChange);
+
+        }
+
+        private void Eng_localization_Selected(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary resourceChange = new ResourceDictionary
+            {
+                Source = new Uri("/Localization/StringResources.eng.xaml", UriKind.Relative)
+            };
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(templatePath);
+            Resources.MergedDictionaries.Add(resourceChange);
 
         }
     }

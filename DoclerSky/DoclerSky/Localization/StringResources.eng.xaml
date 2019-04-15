@@ -2,7 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:DoclerSky.Localization">
-    <System:String x:Key="Test">nopemagyar</System:String>
+   
+    <!-- Localized resources for UI -->
+    <System:String x:Key="current">Current weather</System:String>
+    <System:String x:Key="forecast">Forecast weather</System:String>
 
+    <System:String x:Key="Temp">Temperature</System:String>
+    <System:String x:Key="ApparentTemp">Apparent temperature</System:String>
+    <System:String x:Key="WindSpeed">Wind speed</System:String>
+    <System:String x:Key="Humidity">Humidity</System:String>
+    <System:String x:Key="UVIndex">UV index</System:String>
 </ResourceDictionary>
 

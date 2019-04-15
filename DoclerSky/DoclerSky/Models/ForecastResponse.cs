@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DoclerSky.Models
 {
+    #region Model structure
+
     /// <summary>
     /// Model for the API response
     /// </summary>
@@ -19,4 +21,5 @@ namespace DoclerSky.Models
         public DateTimeOffset DateTime { get; set; }
         public string Icon { get; set; }
     }
+    #endregion
 }

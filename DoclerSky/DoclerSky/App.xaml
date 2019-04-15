@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Texts.xaml" />
+                <ResourceDictionary Source="Templates/TabItem.xaml" />
                 <ResourceDictionary Source="Localization/StringResources.eng.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <cnv:ImageConverter x:Key="ImageConverter" />

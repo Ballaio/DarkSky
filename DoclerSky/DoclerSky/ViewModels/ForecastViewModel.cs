@@ -20,12 +20,16 @@ namespace DoclerSky.ViewModels
 
         #region Private Members
 
+        // Property for cache usage 
         private MemoryCache cachedData;
 
+        // Property for the currently selected Tabitem
         private string selectedCity;
 
+        // DarkSkyService
         private IDarkSkyService _darkSkyService;
 
+        // The main model for UI data binding
         private List<ForecastResponse> _forecast;
 
         #endregion
@@ -40,10 +44,15 @@ namespace DoclerSky.ViewModels
             set
             {
                 selectedCity = value.Name;
+
+                // On selection change, it calls the GetForecast function to Refresh UI data
                 Task.Run(() => GetForecast().Wait());
             }
         }
 
+        /// <summary>
+        /// The object which contains nearly all the UI data, gets refreshed from API call
+        /// </summary>
         public List<ForecastResponse> Forecast
         {
             get
@@ -57,6 +66,10 @@ namespace DoclerSky.ViewModels
             }
         }
 
+        /// <summary>
+        /// The async Task for API call, it also cashes the response data for the selected City
+        /// </summary>
+        /// <returns></returns>
         public async Task GetForecast()
         {
             if (!cachedData.Contains(selectedCity))
@@ -78,7 +91,7 @@ namespace DoclerSky.ViewModels
         #region Constructor
 
         /// <summary>
-        /// Initializes our darkSkyService
+        /// Initializes our darkSkyService, and memory cache
         /// </summary>
         /// <param name="darkSkyService"></param>
         public ForecastViewModel(IDarkSkyService darkSkyService)

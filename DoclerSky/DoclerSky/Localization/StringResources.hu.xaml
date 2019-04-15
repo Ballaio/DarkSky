@@ -1,8 +1,15 @@
-﻿
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:DoclerSky.Localization">
-    <System:String x:Key="Test">magyar</System:String>
 
+    <!-- Localized resources for UI -->
+    <System:String x:Key="current">Mai időjárás</System:String>
+    <System:String x:Key="forecast">Időjárás előrejelzés</System:String>
+
+    <System:String x:Key="Temp">Hőmérséklet</System:String>
+    <System:String x:Key="ApparentTemp">Érzett hőmérséklet</System:String>
+    <System:String x:Key="WindSpeed">Szélerő</System:String>
+    <System:String x:Key="Humidity">Páratartalom</System:String>
+    <System:String x:Key="UVIndex">UV index</System:String>
 </ResourceDictionary>

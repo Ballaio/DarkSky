@@ -1,0 +1,236 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DoclerSky.Templates">
+
+    <DataTemplate x:Key="TabItemTemplate">
+        <Grid Background="#FFE5E5E5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{DynamicResource current}" />
+                    <Image Height="60"
+                           Width="60">
+                        <Image.Source>
+                            <MultiBinding Converter="{StaticResource ImageConverter}">
+                                <Binding Path="Forecast[0].Icon" />
+                            </MultiBinding>
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="Temperature :" />
+                    <TextBlock TextAlignment="Left"
+                               Text="ApparentTemperature :" />
+                    <TextBlock TextAlignment="Left"
+                               Text="WindSpeed :" />
+                    <TextBlock TextAlignment="Left"
+                               Text="Humidity :" />
+                    <TextBlock TextAlignment="Left"
+                               Text="UVIndex :" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[0].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[0].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[0].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[0].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[0].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{DynamicResource forecast}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[1].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[1].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[1].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[1].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[1].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Forecast[2].DateTime.DayOfWeek}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[2].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[2].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[2].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[2].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[2].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Forecast[3].DateTime.DayOfWeek}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[3].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[3].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[3].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[3].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[3].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Forecast[4].DateTime.DayOfWeek}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[4].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[4].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[4].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[4].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[4].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Forecast[5].DateTime.DayOfWeek}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[5].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[5].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[5].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[5].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[5].UVIndex}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="{Binding Forecast[6].DateTime.DayOfWeek}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Temp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource ApparentTemp}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource WindSpeed}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource Humidity}" />
+                    <TextBlock TextAlignment="Left"
+                               Text="{DynamicResource UVIndex}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="{Binding Forecast[6].Temperature}" />
+                    <TextBlock Text="{Binding Forecast[6].ApparentTemperature}" />
+                    <TextBlock Text="{Binding Forecast[6].WindSpeed}" />
+                    <TextBlock Text="{Binding Forecast[6].Humidity}" />
+                    <TextBlock Text="{Binding Forecast[6].UVIndex}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+    </DataTemplate>
+
+    <DataTemplate x:Key="test">
+        <Grid>
+            <TextBlock Text="asd" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
