@@ -78,6 +78,7 @@
     <Compile Include="Commands\RelayCommandAsync.cs" />
     <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="Helpers\GetCoordinates.cs" />
+    <Compile Include="Helpers\GetImagePath.cs" />
     <Compile Include="Models\ForecastResponse.cs" />
     <Compile Include="Services\DarkSkyService.cs" />
     <Compile Include="Services\IDarkSkyService.cs" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net.Http;
 using DoclerSky.Models;
+using DoclerSky.Helpers;
 
 namespace DoclerSky.Services
 {
@@ -86,7 +87,8 @@ namespace DoclerSky.Services
                 UVIndex = currentWeather.uvIndex,
                 WindSpeed = currentWeather.windSpeed,
                 DateTime = DateTimeOffset.FromUnixTimeSeconds((long)currentWeather.time),
-                Icon = currentWeather.icon
+                // converting the given icon type to an image location
+                Icon = GetImagePath.Convert((string)currentWeather.icon)
             });
 
             // using temporal variable for easyer mapping
@@ -108,7 +110,8 @@ namespace DoclerSky.Services
                         UVIndex = item.uvIndex,
                         WindSpeed = item.windSpeed,
                         DateTime = DateTimeOffset.FromUnixTimeSeconds((long)item.time),
-                        Icon = item.icon
+                        // converting the given icon type to an image location
+                        Icon = GetImagePath.Convert((string)item.icon)
                     });
                 }
                 index++;

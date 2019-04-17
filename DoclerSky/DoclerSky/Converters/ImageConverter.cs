@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace DoclerSky.Converters
 {
+    [Obsolete]
     public class ImageConverter : IMultiValueConverter
     {
         /// <summary>
